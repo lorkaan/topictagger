@@ -44,6 +44,14 @@ class WeightedWord:
 
 '''
 Represents as Document object.
+
+This is kinda obsolete, since a document is just a collection
+of words, the source can be linked to the collection vai tuple.
+
+Unless, a Document represents an interface for some collection
+with Weighted Words being the data held by nodes
+
+Additionally, can be used to filter out common words that have no meaning, while retaining 
 '''
 class Document:
 
