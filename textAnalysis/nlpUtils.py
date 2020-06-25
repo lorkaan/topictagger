@@ -6,11 +6,19 @@ General Purpose preprocessing text functions that could be useful.
 
 '''
 
+punctList = [".", ",", "'", "\"", '“', '’', '”']
+
 def extractTokens(text):
     return nltk.word_tokenize(text)
 
 def getPosTag(tokens):
     return nltk.pos_tag(tokens)
+
+def getPunctSet():
+    return set(punctList)
+
+def getStopWordSet(lang="english"):
+    return set(nltk.corpus.stopwords.words(lang))
 
 def lemmatizeWithPOS(tokens):
     lemmatizer = nltk.stem.WordNetLemmatizer()
@@ -28,13 +36,19 @@ def lemmatizeWithoutPOS(tokens):
     return lemma_list
 
 def lemmatizePosTuple(pos_tuples):
+    stopSet = getStopWordSet()
+    punctSet = getPunctSet()
     lemmatizer = nltk.stem.WordNetLemmatizer()
     lemma_list = []
     for (token, pos_tag) in pos_tuples:
-        try:
-            lemma_list.append(lemmatizer.lemmatize(token), pos=pos_tag)
-        except:
-            lemma_list.append(lemmatizer.lemmatize(token))
+        token = token.lower()
+        if token in stopSet or token in punctSet:
+            continue
+        else:
+            try:
+                lemma_list.append(lemmatizer.lemmatize(token, pos=pos_tag))
+            except:
+                lemma_list.append(lemmatizer.lemmatize(token))
     return lemma_list
 
 def wordFrequency(tokens):
