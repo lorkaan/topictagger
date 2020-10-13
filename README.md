@@ -7,5 +7,5 @@ Therefore, there are no installation or usage instruction at this time.
 
 # Future
 
-I am currently working on this project as a joint venture with the [PySpider](https://github.com/lorkaan/pyspider) Prototype to create the [HTML Spider](https://github.com/lorkaan/htmlspider)
+I am currently working on this project as a joint venture with the [PySpider](https://github.com/lorkaan/pyspider) Prototype to create the [HTTP Spider](https://github.com/lorkaan/httpspider)
 Project.
